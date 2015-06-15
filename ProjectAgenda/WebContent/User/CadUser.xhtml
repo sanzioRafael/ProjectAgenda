@@ -1,0 +1,57 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j"
+    template="../layout/template.xhtml">
+    <ui:define name="body">
+		
+		<h:form id="cadUserForm">
+			
+			<rich:panel>
+				<f:facet name="header">Cadastro de usuário</f:facet>
+	            
+				<div class="dialog">
+	                <h:panelGrid columns="3" rowClasses="prop" columnClasses="name,value">
+	                    <h:outputLabel for="name">Nome</h:outputLabel>
+	                    <h:inputText id="name" required="true" value="#{usuarioAction.usuario.nome}">
+	                    	<f:validator validatorId="#{usuarioAction.usuario.nome}" />
+	                    </h:inputText>
+	                    <rich:message for="name" />
+	                    <h:outputLabel for="email">E-mail</h:outputLabel>
+	                    <h:inputText id="email" required="true" value="#{usuarioAction.usuario.email}">
+	                    	<f:validator validatorId="#{usuarioAction.usuario.email}" />
+	                    </h:inputText>
+	                    <rich:message for="email" />
+	                    <h:outputLabel for="login">Login</h:outputLabel>
+	                    <h:inputText id="login" required="true" value="#{usuarioAction.usuario.login}">
+	                    	<f:validator validatorId="#{usuarioAction.usuario.login}" />
+	                    </h:inputText>
+	                    <rich:message for="login" />
+	                    <h:outputLabel for="senha">Senha</h:outputLabel>
+	                    <h:inputSecret id="senha" required="true" value="#{usuarioAction.usuario.senha}">
+	                    	<f:validator validatorId="#{usuarioAction.usuario.senha}" />
+	                    </h:inputSecret>
+	                    <rich:message for="senha" />
+	                    <h:outputLabel for="confsenha">Confirmar senha</h:outputLabel>
+	                    <h:inputSecret id="confsenha" required="true" value="#{usuarioAction.usuario.confSenha}">
+	                    	<f:validator validatorId="#{usuarioAction.usuario.confSenha}" />
+	                    </h:inputSecret>
+	                    <rich:message for="confsenha" />
+	                </h:panelGrid>
+	            </div>
+            </rich:panel>
+            
+            <div class="actionButtons">
+            	<a4j:commandButton value="Cadastrar" action="#{usuarioAction.cadastrarUsuario()}"/>
+        	</div>
+            
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
