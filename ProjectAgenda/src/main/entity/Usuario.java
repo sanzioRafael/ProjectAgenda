@@ -15,9 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import org.hibernate.validator.Pattern;
-import org.hibernate.validator.Size;
+import org.hibernate.validator.Email;
+import org.hibernate.validator.Length;
+import org.hibernate.validator.NotEmpty;
 import org.jboss.seam.annotations.Name;
 
 import com.sun.istack.internal.NotNull;
@@ -36,28 +38,35 @@ public class Usuario implements Serializable {
 	private Long id;
 
 	@NotNull
+	@NotEmpty
 	@Column(name = "NOME", length = 50)
-	@Size(min = 10, max = 50, message="O tamanho do nome deve ser entre {min} e {max} caracteres.")
+	@Length(min = 10, max = 50, message = "O tamanho do nome deve ser entre {min} e {max} caracteres.")
 	private String nome;
 
 	@NotNull
+	@NotEmpty
+	@Email(message = "Email inválido")
 	@Column(name = "EMAIL", length = 100)
-	@Size(min = 20, max = 100, message="O tamanho do e-mail deve ser entre {min} e {max} caracteres.")
-	@Pattern(regex = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[a-zA-Z]{2,4}$", message = "Email errado")
+	@Length(min = 10, max = 100, message = "O tamanho do e-mail deve ser entre {min} e {max} caracteres.")
 	private String email;
 
 	@NotNull
+	@NotEmpty
 	@Column(name = "LOGIN", length = 20)
-	@Size(min = 5, max = 20, message="O tamanho do login deve ser entre {min} e {max} caracteres.")
+	@Length(min = 5, max = 20, message = "O tamanho do login deve ser entre {min} e {max} caracteres.")
 	private String login;
 
 	@NotNull
-	@Column(name = "SENHA", length = 100)
-	@Size(min = 5, max = 15, message="O tamanho da senha deve ser entre {min} e {max} caracteres.")
-	private String senha;
-	
-	@Size(min = 5, max = 15, message="O tamanho da confirmação da senha deve ser entre {min} e {max} caracteres.")
-	private String confSenha;
+	@NotEmpty
+	@Column(name = "SENHA")
+	@Length(min = 5, max = 15, message = "O tamanho da senha deve ser entre {min} e {max} caracteres.")
+	private String senha = "";
+
+	@NotNull
+	@NotEmpty
+	@Column(name = "CONFSENHA")
+	@Length(min = 5, max = 15, message = "O tamanho da confirmação da senha deve ser entre {min} e {max} caracteres.")
+	private String confSenha = "";
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinTable(name = "USUARIO_CONTATO", joinColumns = @JoinColumn(name = "USUARIO_CONTATO"), inverseJoinColumns = @JoinColumn(name = "CONTATO_ID"))
@@ -99,6 +108,7 @@ public class Usuario implements Serializable {
 		this.login = login;
 	}
 
+	@Transient
 	public String getSenha() {
 		return senha;
 	}
@@ -107,6 +117,7 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
+	@Transient
 	public String getConfSenha() {
 		return confSenha;
 	}

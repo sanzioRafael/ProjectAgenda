@@ -30,7 +30,7 @@
             </div>
 
             <p>
-              <i>Nota - </i> Se você não é cadastrado se cadastre<h:outputText value="&#160;" /><s:link id="linkCadUser" view="/User/CadUser.xhtml" propagation="none" value="aqui"/>.
+              <i>Nota - </i> Se você não é cadastrado se cadastre<h:outputText value="&#160;" /><s:link id="linkCadUser" action="#{usuarioAction.novoUsuario()}" view="/User/CadUser.xhtml" value="aqui" />.
             </p>
 
         </rich:panel>

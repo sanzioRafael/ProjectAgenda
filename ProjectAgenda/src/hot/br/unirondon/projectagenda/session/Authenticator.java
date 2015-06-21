@@ -1,8 +1,11 @@
 package br.unirondon.projectagenda.session;
 
+import javax.persistence.EntityManager;
+
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Credentials;
 import org.jboss.seam.security.Identity;
@@ -13,10 +16,17 @@ public class Authenticator {
 	private Log log;
 
 	@In
-	Identity identity;
+	private Identity identity;
+	
 	@In
-	Credentials credentials;
+	private Credentials credentials;
+	
+	@In
+	private EntityManager entityManager;
 
+	@In
+	private FacesMessages facesMessages;
+	
 	public boolean authenticate() {
 		log.info("authenticating {0}", credentials.getUsername());
 		// write your authentication logic here,

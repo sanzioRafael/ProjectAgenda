@@ -7,10 +7,13 @@
 
     <page login-required="false" view-id="/*">
         <navigation>
-            <rule if-outcome="home">
-                <redirect view-id="/home.xhtml"/>
-            </rule>
-        </navigation>
+			<rule if-outcome="home">
+				<redirect view-id="/home.xhtml" />
+			</rule>
+			<rule if-outcome="voltar">
+				<end-conversation before-redirect="true" />
+			</rule>
+		</navigation>
     </page>
     
     <exception class="org.jboss.seam.framework.EntityNotFoundException">

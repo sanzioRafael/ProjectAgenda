@@ -64,7 +64,8 @@ public class UsuarioAction implements Cloneable, Serializable {
 			facesMessages.add(Severity.WARN, "Usuário excluído com sucess");
 			return ("excluirUsuario");
 		} catch (NoResultException e) {
-			facesMessages.add(Severity.ERROR, "Não foi possível excluir o usuário");
+			facesMessages.add(Severity.ERROR,
+					"Não foi possível excluir o usuário");
 			return (null);
 		}
 	}
@@ -73,11 +74,11 @@ public class UsuarioAction implements Cloneable, Serializable {
 	public String cadastrarUsuario() {
 		try {
 			usuario.setSenha(EncripiterSenha.encriptar(usuario.getSenha()));
+			usuario.setConfSenha(EncripiterSenha.encriptar(usuario.getConfSenha()));
+
+			entityManager.persist(usuario);
 			
-			entityManager.merge(usuario);
-			entityManager.flush();
-			
-			facesMessages.add(Severity.WARN, "Usuário cadastrado com sucesso, favor checar e-mail!");
+			facesMessages.add(Severity.INFO, "Usuário cadastrado com sucesso, favor checar e-mail!");
 			return ("cadastarUsuario");
 		} catch (NoResultException e) {
 			facesMessages.add(Severity.ERROR, "Não foi possível cadastrar o usuáro");
@@ -93,9 +94,15 @@ public class UsuarioAction implements Cloneable, Serializable {
 
 	@AssertTrue(message = "Senhas estão diferentes")
 	public boolean isPasswordEquals() {
-		return usuario.getSenha().equals(usuario.getConfSenha());
+		if (usuario.getSenha() == null || usuario.getConfSenha() == null)
+			return false;
+		
+		if (usuario.getSenha().equals(usuario.getConfSenha()))
+			return true;
+		else
+			return false;
 	}
-	
+
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
@@ -119,7 +126,7 @@ public class UsuarioAction implements Cloneable, Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return super.clone();

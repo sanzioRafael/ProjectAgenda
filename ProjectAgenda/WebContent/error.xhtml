@@ -5,15 +5,22 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="layout/template.xhtml">
+    template="layout/template.xhtml"
+                xmlns:rich="http://richfaces.org/rich">
 
     <ui:param name="showGlobalMessages" value="false"/>
     <ui:define name="body">
 
-        <h1>Erro</h1>
-        <p>Alguma coisa ruim aconteceu :-(</p>
-
-        <h:messages id="errorMessage" styleClass="message"/>
+	<div class="dialog">
+        <h:panelGrid>
+        	<rich:panel>
+		        <h1>Erro</h1>
+		        <p>Alguma coisa ruim aconteceu :-(</p>
+		
+		        <h:messages id="errorMessage" styleClass="message"/>
+		    </rich:panel>
+        </h:panelGrid>
+	</div>
 
     </ui:define>
 </ui:composition>
