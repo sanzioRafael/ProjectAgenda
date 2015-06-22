@@ -17,13 +17,13 @@ h1 {
 	margin-top: 0;
 }
 
-input[type=submit], input[type=button] {
+input[type=submit],input[type=button] {
 	font-size: 11px;
 	margin: 5px 5px 5px 0;
 	cursor: pointer;
 }
 
-input[type=text], input[type=password], textarea {
+input[type=text],input[type=password],textarea {
 	font-size: 12px;
 	padding-left: 1px;
 }
@@ -32,7 +32,7 @@ select {
 	font-size: 13px;
 }
 
-.tableControl, .actionButtons {
+.tableControl,.actionButtons {
 	width: 100%;
 }
 
@@ -57,6 +57,7 @@ select {
 .body {
 	padding: 30px;
 }
+
 .message {
 	padding: 5px;
 	list-style: none;
@@ -116,7 +117,7 @@ img.errors {
 	padding-right: 5px;
 }
 
-.errors input, .errors textarea, .errors select {
+.errors input,.errors textarea,.errors select {
 	border: 1px solid red !important;
 }
 
@@ -127,25 +128,22 @@ img.errors {
 
 .rich-stglpanel-body {
 	overflow: auto;
-} 
+}
 
-/* the specificity here is necessary to override the defaults */
-/*
-.rich-panel .rich-panel-header,
-.rich-stglpanel .rich-stglpanel-header {
+.rich-panel .rich-panel-header,.rich-stglpanel .rich-stglpanel-header {
 	padding: 2px 3px;
-}*/
+}
 
-.rich-panel input[type=submit], .rich-panel input[type=button],
-.rich-tabpanel input[type=submit], .rich-tabpanel input[type=button] {
+.rich-panel input[type=submit],.rich-panel input[type=button],.rich-tabpanel input[type=submit],.rich-tabpanel input[type=button]
+	{
 	margin-bottom: 0;
 }
 
-.tableControl input[type=submit], .tableControl input[type=button], .tableControl select {
+.tableControl input[type=submit],.tableControl input[type=button],.tableControl select
+	{
 	margin: 5px 0 5px 5px;
 }
 
-/* I don't know why this is necessary, but the select is off by a pixel on the top and is padding too much on the left */
 .tableControl select {
 	margin-left: 2px;
 	position: relative;
@@ -165,7 +163,7 @@ img.errors {
 	text-decoration: none;
 }
 
-.rich-toolbar-item a:hover, .rich-ddmenu-label-select {
+.rich-toolbar-item a:hover,.rich-ddmenu-label-select {
 	text-decoration: underline;
 }
 
@@ -207,13 +205,13 @@ td.action a {
 }
 
 table.radio {
-   border: 0;
+	border: 0;
 }
 
 table.radio td {
-   padding: 0 2px;
+	padding: 0 2px;
 }
 
 table.radio input[type=radio] {
-   vertical-align: bottom;
+	vertical-align: bottom;
 }
