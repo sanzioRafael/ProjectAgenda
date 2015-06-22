@@ -64,8 +64,7 @@ public class UsuarioAction implements Cloneable, Serializable {
 			facesMessages.add(Severity.WARN, "Usuário excluído com sucess");
 			return ("excluirUsuario");
 		} catch (NoResultException e) {
-			facesMessages.add(Severity.ERROR,
-					"Não foi possível excluir o usuário");
+			facesMessages.add(Severity.ERROR, "Não foi possível excluir o usuário");
 			return (null);
 		}
 	}

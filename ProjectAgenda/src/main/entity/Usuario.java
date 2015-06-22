@@ -20,9 +20,8 @@ import javax.persistence.Transient;
 import org.hibernate.validator.Email;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.Name;
-
-import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "USUARIO")
@@ -38,26 +37,22 @@ public class Usuario implements Serializable {
 	private Long id;
 
 	@NotNull
-	@NotEmpty
 	@Column(name = "NOME", length = 50)
 	@Length(min = 10, max = 50, message = "O tamanho do nome deve ser entre {min} e {max} caracteres.")
 	private String nome;
 
 	@NotNull
-	@NotEmpty
 	@Email(message = "Email inválido")
 	@Column(name = "EMAIL", length = 100)
 	@Length(min = 10, max = 100, message = "O tamanho do e-mail deve ser entre {min} e {max} caracteres.")
 	private String email;
 
 	@NotNull
-	@NotEmpty
 	@Column(name = "LOGIN", length = 20)
 	@Length(min = 5, max = 20, message = "O tamanho do login deve ser entre {min} e {max} caracteres.")
 	private String login;
 
 	@NotNull
-	@NotEmpty
 	@Column(name = "SENHA")
 	@Length(min = 5, max = 15, message = "O tamanho da senha deve ser entre {min} e {max} caracteres.")
 	private String senha = "";
